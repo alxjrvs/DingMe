@@ -1,0 +1,17 @@
+%h1 Listing objectives
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @objectives.each do |objective|
+    %tr
+      %td= link_to 'Show', objective
+      %td= link_to 'Edit', edit_objective_path(objective)
+      %td= link_to 'Destroy', objective, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Objective', new_objective_path

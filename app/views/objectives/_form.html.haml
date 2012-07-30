@@ -1,0 +1,10 @@
+= form_for @objective do |f|
+  -if @objective.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@objective.errors.count, "error")} prohibited this objective from being saved:"
+      %ul
+        - @objective.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'
