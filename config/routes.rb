@@ -3,9 +3,10 @@ DingMe::Application.routes.draw do
 
   resources :users
 
-  resources :objectives
 
-  resources :quests
+  resources :quests do
+    resources :objectives
+  end
 
   match 'quests/:id/embark' => 'quests#embark', :as => :embark
 

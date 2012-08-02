@@ -28,6 +28,16 @@ class QuestsController < ApplicationController
     @quest = Quest.find(params[:id])
   end
 
+  def destroy
+    @quest = Quest.find(params[:id])
+    @quest.destroy
+  
+    respond_to do |wants|
+      wants.html { redirect_to(quests_url) }
+      wants.xml  { head :ok }
+    end
+  end
+
   def embark
     @quest.add_to_user(current_user)
     flash[:notice] = "Successfully copied to your Questlog."
