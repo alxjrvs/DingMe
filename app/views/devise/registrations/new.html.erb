@@ -5,8 +5,8 @@
 
   <div class="form-inputs">
     <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :fname, :required => true %>
-    <%= f.input :lname, :required => true %>
+    <%= f.input :fname, :required => true, :label => "First name" %>
+    <%= f.input :lname, :required => true, :label =>  "Last Name" %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
   </div>

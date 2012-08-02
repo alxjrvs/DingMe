@@ -18,7 +18,7 @@ class QuestsController < ApplicationController
   def create
     @quest = current_user.quests.new(params[:quest])
     if @quest.save
-      redirect_to root_url, :notice => "New Quest Added"
+      redirect_to new_quest_objective_path(@quest), :notice => "New Quest Added"
     else
       render "new"
     end
@@ -31,7 +31,7 @@ class QuestsController < ApplicationController
   def destroy
     @quest = Quest.find(params[:id])
     @quest.destroy
-  
+
     respond_to do |wants|
       wants.html { redirect_to(quests_url) }
       wants.xml  { head :ok }
@@ -42,7 +42,15 @@ class QuestsController < ApplicationController
     @quest.add_to_user(current_user)
     flash[:notice] = "Successfully copied to your Questlog."
     redirect_to root_url
-    
+  end
+
+  def publish
+    if @quest.valid_publish
+      @quest.save
+    else
+      flash[:notice] = "Must have at least 4 Objectives!"
+      redirect_to back_url
+    end
   end
 
   private

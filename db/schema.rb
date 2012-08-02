@@ -11,22 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802160142) do
+ActiveRecord::Schema.define(:version => 20120802165804) do
 
   create_table "objective_instances", :force => true do |t|
     t.integer  "quest_instance_id"
-    t.integer  "objective_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "complete?",         :default => false
   end
 
-  add_index "objective_instances", ["objective_id"], :name => "index_objective_instances_on_objective_id"
   add_index "objective_instances", ["quest_instance_id"], :name => "index_objective_instances_on_quest_instance_id"
 
   create_table "objectives", :force => true do |t|
     t.integer  "quest_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "exp"
+    t.string   "title"
+    t.text     "description"
   end
 
   add_index "objectives", ["quest_id"], :name => "index_objectives_on_quest_id"
@@ -45,8 +47,9 @@ ActiveRecord::Schema.define(:version => 20120802160142) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "published",   :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "quests", ["user_id"], :name => "index_quests_on_user_id"
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20120802160142) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.binary   "admin"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -4,6 +4,7 @@ class CreateQuests < ActiveRecord::Migration
       t.references  :user
       t.string      :title
       t.text        :description
+      t.boolean     :published, :default => false
       t.timestamps
     end
   add_index :quests, :user_id

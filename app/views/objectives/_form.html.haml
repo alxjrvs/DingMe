@@ -1,4 +1,4 @@
-= form_for @objective do |f|
+=simple_form_for [@quest, @objective] do |f|
   -if @objective.errors.any?
     #error_explanation
       %h2= "#{pluralize(@objective.errors.count, "error")} prohibited this objective from being saved:"
