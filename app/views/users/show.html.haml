@@ -1,6 +1,6 @@
 %p#notice= notice
 
-%h2="Quests Written by #{current_user.fname}"
+%h2="Quests Written by #{@user.fname}"
 -@user.quests.each do |quest|
   %p=link_to quest.title, quest_path(quest)
 
