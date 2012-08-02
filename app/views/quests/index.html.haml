@@ -1,4 +1,4 @@
-%h1 Listing quests
+%h1 Available Quests
 
 - @quests.each do |quest|
   .row-fluid
@@ -11,5 +11,5 @@
             %p= link_to 'Show |', quest
             %p= link_to 'Edit |', edit_quest_path(quest)
             %p= link_to 'Destroy', quest, :confirm => 'Are you sure?', :method => :delete
-            %p= link_to 'Add this Quest to your Log', embark_path(quest)
+            %p= button_to 'Add this Quest to your Log', embark_path(quest)
 = link_to 'New Quest', new_quest_path

@@ -30,7 +30,9 @@ class QuestsController < ApplicationController
 
   def embark
     @quest.add_to_user(current_user)
+    flash[:notice] = "Successfully copied to your Questlog."
     redirect_to root_url
+    
   end
 
   private
