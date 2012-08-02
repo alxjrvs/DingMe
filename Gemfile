@@ -11,7 +11,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'rspec-pride'
-  gem 'thin'
 end
 
 gem 'devise'
