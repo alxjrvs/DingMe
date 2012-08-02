@@ -5,12 +5,10 @@
     .span6.prow
       %p= "#{quest.title} |"
       %p= "#{quest.description} |"
-      =if quest.user == current_user
+      -if current_user == quest.user
         .row-fluid
           .span6.quest_owner
             %p= link_to 'Show |', quest
             %p= link_to 'Edit |', edit_quest_path(quest)
             %p= link_to 'Destroy', quest, :confirm => 'Are you sure?', :method => :delete
-%br
-
 = link_to 'New Quest', new_quest_path

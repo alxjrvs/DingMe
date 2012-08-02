@@ -21,5 +21,9 @@ class QuestsController < ApplicationController
     else
       render "new"
     end
+
+  def edit
+    @quest = Quest.find(params[:id])
+  end
   end
 end
