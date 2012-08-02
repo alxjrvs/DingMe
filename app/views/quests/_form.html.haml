@@ -1,10 +1,10 @@
-= form_for @quest do |f|
+= simple_form_for @quest do |f|
   -if @quest.errors.any?
     #error_explanation
       %h2= "#{pluralize(@quest.errors.count, "error")} prohibited this quest from being saved:"
       %ul
         - @quest.errors.full_messages.each do |msg|
           %li= msg
-
-  .actions
-    = f.submit 'Save'
+  = f.input :title
+  = f.input :description, :as => :text
+  = f.button :submit, :label => "Save"

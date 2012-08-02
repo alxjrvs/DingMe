@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(:version => 20120802061802) do
 
   create_table "quests", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "quests", ["user_id"], :name => "index_quests_on_user_id"

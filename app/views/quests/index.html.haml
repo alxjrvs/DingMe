@@ -1,19 +1,16 @@
 %h1 Listing quests
 
-%table
-  %tr
-    %th
-    %th
-    %th
-
-  - if @quests
-    - @quests.each do |quest|
-      %tr
-        %td= link_to 'Show', quest
-        %td= link_to 'Edit', edit_quest_path(quest)
-        %td= link_to 'Destroy', quest, :confirm => 'Are you sure?', :method => :delete
-  - else
-    %p No quests, yet!
+- @quests.each do |quest|
+  .row-fluid
+    .span6.prow
+      %p= "#{quest.title} |"
+      %p= "#{quest.description} |"
+      =if quest.user == current_user
+        .row-fluid
+          .span6.quest_owner
+            %p= link_to 'Show |', quest
+            %p= link_to 'Edit |', edit_quest_path(quest)
+            %p= link_to 'Destroy', quest, :confirm => 'Are you sure?', :method => :delete
 %br
 
 = link_to 'New Quest', new_quest_path
