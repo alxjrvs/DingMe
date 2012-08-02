@@ -1,15 +1,18 @@
 %h1 Available Quests
-
-- @quests.each do |quest|
-  .row-fluid
-    .span6.prow
-      %p= "#{quest.title}"
-      %p= "#{quest.description}"
-      -if current_user == quest.user
-        .row-fluid
-          .span6.quest_owner
-            %p= link_to 'Show |', quest
-            %p= link_to 'Edit |', edit_quest_path(quest)
-            %p= link_to 'Destroy', quest, :confirm => 'Are you sure?', :method => :delete
-            %p= button_to 'Add this Quest to your Log', embark_path(quest)
 = link_to 'New Quest', new_quest_path
+.row-fluid.central_container
+  .span12
+    .row-fluid
+      - @quests.each do |quest|
+        .span4
+          %h4.subhead= "#{quest.title}"
+          %p= "#{quest.description}"
+          -if current_user == quest.user
+            .internal
+              %p= link_to 'Show | ', quest
+              %p= link_to 'Edit | ', edit_quest_path(quest)
+              %p= link_to 'Destroy | ', quest, :confirm => 'Are you sure?', :method => :delete
+              %p= link_to 'Add this Quest to your Log', embark_path(quest)
+          -else
+            .internal
+              %p= link_to "Made by #{quest.user.fname}", user_path(quest.user)

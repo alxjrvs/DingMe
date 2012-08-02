@@ -7,16 +7,20 @@
   padding:20px 0 0 17%;
   }
 
-.prow p {
-  float:left;
-  clear:both;
+.central_container {
+  margin-top:20px;
 }
 
-.quest_owner p { 
+.internal p {
   float:left;
-  clear:none;
 }
 
+.internal {
+}
+
+h4.subhead {
+  margin:5px 0 5px 0;
+}
 
 #flash_notice {
   background: red;

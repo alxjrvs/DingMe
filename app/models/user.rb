@@ -15,5 +15,7 @@ class User < ActiveRecord::Base
 
   #above is Devise, below is me. 
   attr_accessible :fname, :lname
+  
+  validates :fname, :lname, :presence => true
 
 end

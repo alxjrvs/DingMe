@@ -52,7 +52,8 @@ ActiveRecord::Schema.define(:version => 20120802061802) do
   add_index "quests", ["user_id"], :name => "index_quests_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.integer  "quest_id"
+    t.string   "fname"
+    t.string   "lname"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
