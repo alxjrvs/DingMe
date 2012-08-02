@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20120802165804) do
     t.integer  "quest_instance_id"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
-    t.boolean  "complete?",         :default => false
+    t.boolean  "complete",          :default => false
   end
 
   add_index "objective_instances", ["quest_instance_id"], :name => "index_objective_instances_on_quest_instance_id"

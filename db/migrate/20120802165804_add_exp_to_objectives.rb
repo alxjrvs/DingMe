@@ -6,7 +6,7 @@ class AddExpToObjectives < ActiveRecord::Migration
       t.text      :description
     end
     change_table(:objective_instances) do |t|
-      t.boolean :complete?, :default => false
+      t.boolean :complete, :default => false
     end
   end
 end
