@@ -14,6 +14,7 @@ group :development, :test do
   gem 'thin'
 end
 
+gem 'devise'
 gem 'hpricot'
 gem 'bootstrap-sass', '2.0.0'
 gem 'pg'
