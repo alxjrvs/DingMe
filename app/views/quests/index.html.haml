@@ -15,4 +15,5 @@
               %p= link_to 'Add this Quest to your Log', embark_path(quest)
           -else
             .internal
+              %p= link_to 'Add this Quest to your Log', embark_path(quest)
               %p= link_to "Made by #{quest.user.fname}", user_path(quest.user)
