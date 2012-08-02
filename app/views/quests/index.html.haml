@@ -3,8 +3,8 @@
 - @quests.each do |quest|
   .row-fluid
     .span6.prow
-      %p= "#{quest.title} |"
-      %p= "#{quest.description} |"
+      %p= "#{quest.title}"
+      %p= "#{quest.description}"
       -if current_user == quest.user
         .row-fluid
           .span6.quest_owner
