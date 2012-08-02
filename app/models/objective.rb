@@ -1,3 +1,4 @@
 class Objective < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :quest
+  has_many :objective_isntances
 end

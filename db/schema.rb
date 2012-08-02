@@ -11,19 +11,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802053947) do
+ActiveRecord::Schema.define(:version => 20120802061802) do
+
+  create_table "objective_instances", :force => true do |t|
+    t.integer  "quest_instance_id"
+    t.integer  "objective_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "objective_instances", ["objective_id"], :name => "index_objective_instances_on_objective_id"
+  add_index "objective_instances", ["quest_instance_id"], :name => "index_objective_instances_on_quest_instance_id"
 
   create_table "objectives", :force => true do |t|
+    t.integer  "quest_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "objectives", ["quest_id"], :name => "index_objectives_on_quest_id"
+
+  create_table "quest_instances", :force => true do |t|
+    t.integer  "quest_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "quest_instances", ["quest_id"], :name => "index_quest_instances_on_quest_id"
+  add_index "quest_instances", ["user_id"], :name => "index_quest_instances_on_user_id"
 
   create_table "quests", :force => true do |t|
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  add_index "quests", ["user_id"], :name => "index_quests_on_user_id"
+
   create_table "users", :force => true do |t|
+    t.integer  "quest_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
