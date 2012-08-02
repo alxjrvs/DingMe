@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  Hey, <%= current_user.email %>
+  Hey, <%= link_to current_user.email, user_path(current_user) %>
   <div class = "clear">
     <%= link_to "Edit your Profile,", edit_user_registration_path %>
   </div>

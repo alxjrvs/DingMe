@@ -1,5 +1,10 @@
 %p#notice= notice
 
+%h2="Quests Written by #{current_user.email}"
+-@user.quests.each do |quest|
+  %p=link_to quest.title, quest_path(quest)
+
+%h2 Quests being Undertaken
 -@user.quest_instances.each do |quest|
   %p=quest.quest.title
 
