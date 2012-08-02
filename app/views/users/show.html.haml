@@ -1,5 +1,7 @@
 %p#notice= notice
 
+-@user.quest_instances.each do |quest|
+  %p=quest.quest.title
 
 = link_to 'Edit', edit_user_path(@user)
 \|

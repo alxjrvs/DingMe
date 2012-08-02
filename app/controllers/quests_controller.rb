@@ -1,6 +1,7 @@
 class QuestsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :get_quest
 
   def index
     @quests = Quest.all
@@ -21,9 +22,23 @@ class QuestsController < ApplicationController
     else
       render "new"
     end
+  end
 
   def edit
     @quest = Quest.find(params[:id])
   end
+
+  def embark
+    @quest.add_to_user(current_user)
+    redirect_to root_url
   end
+
+  private
+
+  def get_quest
+    @quest = Quest.find(params[:id]) if params[:id].present?
+  end
+
+
 end
+

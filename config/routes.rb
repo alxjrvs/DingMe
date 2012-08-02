@@ -7,6 +7,10 @@ DingMe::Application.routes.draw do
 
   resources :quests
 
+  match 'quests/:id/embark' => 'quests#embark', :as => :embark
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
