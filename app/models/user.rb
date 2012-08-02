@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   #above is Devise, below is me. 
-  attr_accessible :fname, :lname
+  attr_accessible :fname, :lname, :admin
   
   validates :fname, :lname, :presence => true
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802061802) do
+ActiveRecord::Schema.define(:version => 20120802160142) do
 
   create_table "objective_instances", :force => true do |t|
     t.integer  "quest_instance_id"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20120802061802) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.binary   "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

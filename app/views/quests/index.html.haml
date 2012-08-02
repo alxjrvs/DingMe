@@ -7,12 +7,20 @@
         .span4
           %h4.subhead= "#{quest.title}"
           %p= "#{quest.description}"
+          -#-binding.pry
           -if current_user == quest.user
             .internal
               %p= link_to 'Show | ', quest
               %p= link_to 'Edit | ', edit_quest_path(quest)
               %p= link_to 'Destroy | ', quest, :confirm => 'Are you sure?', :method => :delete
               %p= link_to 'Add this Quest to your Log', embark_path(quest)
+          -elsif current_user and current_user.admin
+            .internal
+              %p= link_to 'Show | ', quest
+              %p= link_to 'Edit | ', edit_quest_path(quest)
+              %p= link_to 'Destroy | ', quest, :confirm => 'Are you sure?', :method => :delete
+              %p= link_to 'Add this Quest to your Log', embark_path(quest)
+              %p= link_to "Made by #{quest.user.fname}", user_path(quest.user)
           -else
             .internal
               %p= link_to 'Add this Quest to your Log', embark_path(quest)
