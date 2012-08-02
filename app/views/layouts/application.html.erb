@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DingMe</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div id="container">
-    <div class="user_nav">
-      <% if user_signed_in? %>
-        Hey, <%= current_user.email %>
-        <%= link_to "Edit your Profile,", edit_user_registration_path %>
-        <%= link_to "Or Logout", destroy_user_session_path, method: :delete%>
-      <% else %> 
-        <%= link_to "Sign Up", new_user_registration_path %>
-        <%= link_to "Login", new_user_session_path %>
-      <% end %>
+  <div class="container-fluid">
+    <%= render "shared/header" %>
+    <div class="row-fluid">
+      <div class="span2">
+        <%= render "shared/sidebar" %>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash_#{name}"  %>
+        <% end %>
+      </div>
+      <div class="span8">
+        <%= yield %>
+      </div>
     </div>
-
-<%= yield %>
   </div>
 </body>
 </html>
