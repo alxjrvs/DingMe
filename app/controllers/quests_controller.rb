@@ -4,7 +4,7 @@ class QuestsController < ApplicationController
   before_filter :get_quest
 
   def index
-    @quests = Quest.all
+    @quests = Quest.all_published
     respond_to do |wants|
       wants.html # index.html.erb
       wants.xml  { render :xml => @quests }

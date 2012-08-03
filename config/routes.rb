@@ -8,6 +8,7 @@ DingMe::Application.routes.draw do
     resources :objectives
   end
 
+  match 'quests/:id/publish' => 'quests#publish', :as => :publish
   match 'quests/:id/embark' => 'quests#embark', :as => :embark
 
 

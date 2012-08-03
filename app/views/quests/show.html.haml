@@ -1,8 +1,11 @@
-%p#notice= notice
+= link_to_if(current_user == @quest.user, 'Edit', edit_quest_path(@quest))
+= link_to 'New Objective', new_quest_objective_path(@quest)
+= link_to 'Back', quests_path
 
 %h2= @quest.title
 %p= @quest.description
+-@quest.objectives.each do |objective|
+  %h3= objective.title
+  %p= objective.description
+  %p= "#{objective.exp}%"
 
-
-= link_to_if(current_user == @quest.user, 'Edit', edit_quest_path(@quest))
-= link_to 'Back', quests_path

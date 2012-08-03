@@ -7,4 +7,7 @@
           %li= msg
 
   .actions
-    = f.submit 'Save'
+    = f.input :title
+    = f.input :description, :as => :text
+    = f.input :exp, :as => :select, :collection => 1..50
+    = f.button :submit, :label => 'Save'
