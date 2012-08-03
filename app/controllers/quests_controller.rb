@@ -1,6 +1,6 @@
 class QuestsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index]
   before_filter :get_quest
 
   def index
@@ -11,6 +11,16 @@ class QuestsController < ApplicationController
     end
   end
 
+  def show
+    @user = current_user
+    @quest = Quest.find(params[:id])
+
+    respond_to do |wants|
+      wants.html # show.html.erb
+      wants.xml  { render :xml => @quest }
+    end
+  end
+
   def new
     @quest = current_user.quests.new
   end
@@ -18,7 +28,7 @@ class QuestsController < ApplicationController
   def create
     @quest = current_user.quests.new(params[:quest])
     if @quest.save
-      redirect_to new_quest_objective_path(@quest), :notice => "New Quest Added"
+      redirect_to quest_path(@quest), :notice => "New Quest Added"
     else
       render "new"
     end
@@ -45,11 +55,16 @@ class QuestsController < ApplicationController
   end
 
   def publish
-    if @quest.valid_publish
-      @quest.save
+    if @quest.user == current_user
+      if @quest.valid_publish
+        @quest.save
+        flash[:notice] = "Published!"
+      else
+        flash[:notice] = "Must have at least 4 Objectives that add up to 100!!"
+        redirect_to quest_path(@quest)
+      end
     else
-      flash[:notice] = "Must have at least 4 Objectives!"
-      redirect_to back_url
+      redirect_to quest_path(@quest)
     end
   end
 

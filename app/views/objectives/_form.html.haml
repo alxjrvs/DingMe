@@ -5,9 +5,9 @@
       %ul
         - @objective.errors.full_messages.each do |msg|
           %li= msg
-
   .actions
     = f.input :title
     = f.input :description, :as => :text
-    = f.input :exp, :as => :select, :collection => 1..50
+    = f.input :exp, :as => :select, :collection => 1..@exp
+    -#= f.input :exp, :as => :select, :collection => 1..@exp
     = f.button :submit, :label => 'Save'
