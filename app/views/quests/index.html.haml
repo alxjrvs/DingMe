@@ -5,7 +5,8 @@
     .row-fluid
       - @quests.each do |quest|
         .span4
-          %h4.subhead= "#{quest.title}"
+          %h4.subhead= link_to quest.title, quest_path(quest)
+          %p= link_to "Made by #{quest.user.fname}", user_path(quest.user)
           %p= "#{quest.description}"
           -#-binding.pry
           -if current_user == quest.user
@@ -20,8 +21,6 @@
               %p= link_to 'Edit | ', edit_quest_path(quest)
               %p= link_to 'Destroy | ', quest, :confirm => 'Are you sure?', :method => :delete
               %p= link_to 'Add this Quest to your Log', embark_path(quest)
-              %p= link_to "Made by #{quest.user.fname}", user_path(quest.user)
           -else
             .internal
               %p= link_to 'Add this Quest to your Log', embark_path(quest)
-              %p= link_to "Made by #{quest.user.fname}", user_path(quest.user)
